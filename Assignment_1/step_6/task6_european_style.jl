@@ -151,6 +151,7 @@ Reserve_values = Dict(g => R_up_values[g] + R_down_values[g] for g in flexible_g
 
 
 # Print the results
+println("\nObjective Value Reserve: ", objective_value(m_reserve))
 println("\n Reserve Market Clearing Prices:")
 println("   • Upward Reserve Price: ", λ_up, " €/MWh")
 println("   • Downward Reserve Price: ", λ_down, " €/MWh")
