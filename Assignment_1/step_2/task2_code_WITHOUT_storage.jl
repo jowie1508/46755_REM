@@ -74,10 +74,27 @@ function main()
     println("Social Welfare WITHOUT Battery: €", round(social_welfare, digits=2))
 
     println("Generator Profits (Without Battery):")
-    for g in 1:G
-        profit = sum((market_prices[t] - Offer_Price[g]) * value(Pg[t,g]) for t in 1:T)
-        println("  Generator $g: €", round(profit, digits=2))
+    # Generator profits
+    generator_profit = zeros(G)
+    for g in 1:G, t in 1:T
+        generator_profit[g] += (market_prices_with[t] - Generator_Costs_Table2[g]) * value(Pg[t, g])
     end
+    # Get the permutation indices to sort offer and Bid prices
+    sorted_indices_offer = sortperm(Offer_Price)
+
+
+    # Sort Prices and Pg/Pd values using the permutation indices
+    generator_profit_sorted = generator_profit[sorted_indices_offer]
+    
+
+    
+    # Print generator-wise profits
+    println("Generator Profits:")
+    for g in 1:G
+        println("  Generator $g Profit: €", round(generator_profit_sorted[g], digits=2))
+    end
+
+    println("Total Social Welfare: €", round(objective_value(m), digits=2))
 
     ### ------------------ Optional Plot ------------------ ###
     # Uncomment to visualize market prices
