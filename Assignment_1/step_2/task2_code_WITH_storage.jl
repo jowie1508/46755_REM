@@ -101,7 +101,7 @@ function main()
         for t in 1:T
     )
     println("Battery Profit: €", round(battery_profit, digits=2))
-
+    
     # Generator profits
     generator_profit = zeros(G)
     for g in 1:G, t in 1:T
@@ -118,11 +118,20 @@ function main()
         end
     end
     println("Wind Farm Total Profit: €", round(wind_farm_profit, digits=2))
+    
+    # Get the permutation indices to sort offer and Bid prices
+    sorted_indices_offer = sortperm(Generator_Costs_Table2)
+    
+    
+    # Sort Prices and Pg/Pd values using the permutation indices
+    generator_profit_sorted = generator_profit[sorted_indices_offer]
+ 
 
+ 
     # Print generator-wise profits
     println("Generator Profits:")
     for g in 1:G
-        println("  Generator $g Profit: €", round(generator_profit[g], digits=2))
+        println("  Generator $g Profit: €", round(generator_profit_sorted[g], digits=2))
     end
 
     println("Total Social Welfare: €", round(objective_value(m), digits=2))
