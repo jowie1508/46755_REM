@@ -48,6 +48,7 @@ Ensure all dependencies are installed and Gurobi is licensed. Then run the scrip
 
 using JuMP
 import Pkg
+include("plot_demand_supply.jl")
 
 Pkg.add("Gurobi")
 
@@ -194,7 +195,7 @@ m_balance = Model(Gurobi.Optimizer)
 # 5) Objective function: minimize the total balancing cost
 #    up[g] is charged at cost_up[g], down[g] at cost_down[g], and load curtailment costs €500/MWh
 @objective(m_balance, Min,
-    sum(up[g] * cost_up[g] for g in 1:G) + sum(down[g] * cost_down[g] for g in 1:G) + 500 * curt
+    sum(up[g] * cost_up[g] + down[g] * cost_down[g] for g in 1:G) + 500 * curt
 )
 
 # 6) Constraints
