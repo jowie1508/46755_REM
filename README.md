@@ -15,4 +15,4 @@ The full task description can be found in the course assignment document.
 
 ## Documentation and Explanations
 
-Each julia script contains documented code, trying to make reading it easy and accessible. As for the interpretation of the results, please refer to the written report. 
+Each task contains a seperate README and each julia script contains documented code, trying to make reading it easy and accessible. As for the interpretation of the results, please refer to the written report. 
