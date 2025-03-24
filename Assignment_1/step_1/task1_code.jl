@@ -1,3 +1,46 @@
+"""
+Power Market Optimization Model Social Welfare Maximization
+
+This script models a simplified electricity market using JuMP and the Gurobi solver.
+It maximizes total social welfare by optimizing power allocation between multiple generators
+and demand loads, subject to capacity and balance constraints.
+
+────────────────────────────────────────────────────────────
+Main Features:
+- Defines a linear optimization model with generator and demand bids
+- Solves for the power dispatch that maximizes social welfare
+- Enforces generator and load capacity limits
+- Ensures total generation equals total demand (power balance)
+- Estimates the market clearing price (λ)
+- Calculates generator profits and demand-side utility
+- Plots stepwise supply and demand curves for visualization
+- Displays formatted output with two decimal precision
+
+────────────────────────────────────────────────────────────
+Inputs:
+- Generator offer prices (€/MWh) and capacities (MWh)
+- Demand bid prices (€/MWh) and maximum load (MWh)
+
+Dependencies:
+- JuMP.jl
+- Gurobi.jl (licensed solver)
+- Printf (for formatted output)
+- plot_demand_supply.jl (custom plotting utility)
+
+To Run:
+1. Ensure Gurobi is installed and licensed.
+2. Make sure `plot_demand_supply.jl` is available in the same directory.
+3. Execute the script using Julia.
+
+Output:
+- Estimated market clearing price (€/MWh)
+- Total social welfare (in €)
+- Profit per generator (in €)
+- Utility per demand load (in €)
+
+Note: This is a static (single-period) market model and does not account for network constraints or time coupling.
+"""
+
 using JuMP
 import Pkg
 include("plot_demand_supply.jl")
@@ -16,7 +59,7 @@ using Printf  # For formatted printing
 Constructs a stepwise curve from quantity and price vectors by repeating each point to 
 form horizontal steps, commonly used for supply/demand visualization.
 
-# Arguments
+# ArgumentsAC
 - `quantity`: Vector of quantity levels (e.g., power in MWh)
 - `price`: Corresponding vector of prices (e.g., €/MWh)
 
