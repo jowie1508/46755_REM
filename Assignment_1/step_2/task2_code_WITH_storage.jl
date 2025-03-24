@@ -51,7 +51,7 @@ function main()
     E_stored_capacity = 700
 
     ### ------------------ Generator Setup ------------------ ###
-    Generator_Costs_Table2 = [
+    Offer_Price = [
         12.3; 12.3; 19; 19; 24;
          9.7;  9.7; 5.5; 5; 0;
          9.7; 10; 0; 0; 0; 0; 0; 0
@@ -72,7 +72,7 @@ function main()
 
     @objective(m, Max,
         sum(Bid_Price_Matrix[t,d] * Pd[t,d] for t in 1:T, d in 1:D) -
-        sum(Generator_Costs_Table2[g] * Pg[t,g] for t in 1:T, g in 1:G)
+        sum(Offer_Price[g] * Pg[t,g] for t in 1:T, g in 1:G)
     )
 
     @constraint(m, [t in 1:T, g in 1:G], Pg[t,g] <= generator_matrix[t,g])
@@ -105,13 +105,13 @@ function main()
     # Generator profits
     generator_profit = zeros(G)
     for g in 1:G, t in 1:T
-        generator_profit[g] += (market_prices_with[t] - Generator_Costs_Table2[g]) * value(Pg[t, g])
+        generator_profit[g] += (market_prices_with[t] - Offer_Price[g]) * value(Pg[t, g])
     end
 
     # Wind farm profit (generators with 0 cost)
     wind_farm_profit = 0.0
     for g in 1:G
-        if Generator_Costs_Table2[g] == 0
+        if Offer_Price[g] == 0
             for t in 1:T
                 wind_farm_profit += market_prices_with[t] * value(Pg[t, g])
             end
@@ -120,7 +120,7 @@ function main()
     println("Wind Farm Total Profit: €", round(wind_farm_profit, digits=2))
     
     # Get the permutation indices to sort offer and Bid prices
-    sorted_indices_offer = sortperm(Generator_Costs_Table2)
+    sorted_indices_offer = sortperm(Offer_Price)
     
     
     # Sort Prices and Pg/Pd values using the permutation indices
