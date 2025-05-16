@@ -22,7 +22,15 @@ Each task contains a seperate README and each julia script contains documented c
 
 # Assignment 2 
 
-Assignment2/Task2.ipynb contains the analysis and optimization code for determining optimal reserve capacity bids for stochastic flexible loads in the FCR-D UP market. The notebook implements two solution techniques: ALSO-X and CVaR.
+This assignment extends the electricity market modeling approach by incorporating uncertainty and stakeholder-specific strategies. It is divided into two main parts: the first focuses on a wind farm's optimal day-ahead offering strategy under different balancing schemes and risk preferences; the second examines a stochastic flexible load's participation in ancillary service markets, particularly in the FCR-D UP market.
+
+## Tools & Methods
+
+- Language: [Python](https://www.python.org/)
+- Optimization: [`Gurobi`](https://www.gurobi.com/) via [`gurobipy`](https://www.gurobi.com/documentation/)
+- Visualization: [`matplotlib`](https://matplotlib.org/), [`seaborn`](https://seaborn.pydata.org/), and [`plotly`](https://plotly.com/)
+- Structure: Data, modeling, and evaluation logic follow the step-by-step procedure defined in the assignment instructions.
+
 To ensure reproducibility, all dependencies are listed in requirements.txt. Follow these steps to set up your Python environment and run the notebook:
 
     # 1. Clone the repository or download the project folder
@@ -37,3 +45,7 @@ To ensure reproducibility, all dependencies are listed in requirements.txt. Foll
     pip install -r requirements.txt
 
 Note: This project uses gurobipy, which requires a valid Gurobi installation and license. Alternatively the highs solver can be used.
+
+## Documentation and Explanations
+
+Each task contains a seperate README and each python script contains documented code, trying to make reading it easy and accessible. As for the interpretation of the results, please refer to the written report. 
