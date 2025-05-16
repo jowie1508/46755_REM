@@ -6,3 +6,4 @@ plotly>=5.13
 gurobipy>=10.0
 pyomo>=6.6
 jupyterlab>=3.6
+openpyxl
