@@ -27,7 +27,7 @@ This assignment extends the electricity market modeling approach by incorporatin
 ## Tools & Methods
 
 - Language: [Python](https://www.python.org/)
-- Optimization: [`Gurobi`](https://www.gurobi.com/) via [`gurobipy`](https://www.gurobi.com/documentation/)
+- Optimization: [`Gurobi`](https://www.gurobi.com/) via [`gurobipy`](https://www.gurobi.com/documentation/) and [`Pyomo`](https://pyomo.readthedocs.io/en/stable/)
 - Visualization: [`matplotlib`](https://matplotlib.org/), [`seaborn`](https://seaborn.pydata.org/), and [`plotly`](https://plotly.com/)
 - Structure: Data, modeling, and evaluation logic follow the step-by-step procedure defined in the assignment instructions.
 
