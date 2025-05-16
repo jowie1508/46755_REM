@@ -325,7 +325,7 @@ solver = SolverFactory("gurobi")
 
 
 # Define in-sample sizes and beta values
-scenario_sizes = [100,150,200,250, 300,350, 400,500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600] #Adjust to desired sizes
+scenario_sizes = [100,200, 400,800, 1600] #Adjust to desired sizes
 betas = [0.5] #adjust to desired betas
 
 results = []
@@ -397,7 +397,7 @@ plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 plt.grid(True)
 plt.tight_layout()
-#plt.show() Uncomment to show the plot
+#plt.show() #Uncomment to show the plot
 
 
 
