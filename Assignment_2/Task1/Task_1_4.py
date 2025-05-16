@@ -27,7 +27,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from Assignment_2.Task1.scenarios import main
+from scenarios import main
 import os
 import random
 
@@ -325,7 +325,7 @@ solver = SolverFactory("gurobi")
 
 
 # Define in-sample sizes and beta values
-scenario_sizes = [100,200,400,800,1600] #Adjust to desired sizes
+scenario_sizes = [100,150,200,250, 300,350, 400,500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600] #Adjust to desired sizes
 betas = [0.5] #adjust to desired betas
 
 results = []
@@ -378,8 +378,8 @@ plt.figure(figsize=(8, 5))
 sns.lineplot(data=df_two_price, x="sample_size", y="Expected Profit (€)",
              marker="o", linewidth=2, color="steelblue")
 plt.title("Expected Profit vs In-Sample Size (Two-Price, β = 0.5)", fontsize=16)
-plt.xlabel("In-Sample Scenario Size", fontsize=16)
-plt.ylabel("Expected Profit (€)", fontsize=16)
+plt.xlabel("In-Sample Scenario Size", fontsize=20)
+plt.ylabel("Expected Profit (€)", fontsize=20)
 plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 plt.grid(True)
@@ -391,8 +391,8 @@ plt.figure(figsize=(8, 5))
 sns.lineplot(data=df_two_price, x="sample_size", y="CVaR (€)",
              marker="o", linewidth=2, color="darkred")
 plt.title("CVaR vs In-Sample Size (Two-Price, β = 0.5)", fontsize=16)
-plt.xlabel("In-Sample Scenario Size", fontsize=16)
-plt.ylabel("CVaR (€)", fontsize=16)
+plt.xlabel("In-Sample Scenario Size", fontsize=20)
+plt.ylabel("CVaR (€)", fontsize=20)
 plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 plt.grid(True)
