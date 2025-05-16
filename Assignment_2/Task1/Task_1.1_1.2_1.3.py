@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from Assignment_2.Task1.scenarios import main
+from scenarios import main
 import os
 import random
 import time
